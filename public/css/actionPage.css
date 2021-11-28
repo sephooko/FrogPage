@@ -1,0 +1,28 @@
+body{
+    position: relative;
+    background-image: url(../pictures/code-background.jpg);
+    color:#206020;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.box {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 3px solid  #206020;
+    padding: 20px;
+    background-color: #8cd98c;
+    opacity: 90%;
+
+
+    
+}
+a {
+    border: 3px solid  #206020;
+    padding: 5px;
+    background-color: #8cd98c;
+    text-decoration: none;
+    color:#206020;
+    font-size: large;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}

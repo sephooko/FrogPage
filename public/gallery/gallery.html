@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../gallery/gallery.css">
+    <title>Gallery</title>
+</head>
+<body>
+<div class="text">
+  <div class="hello">
+    <h3>Hello</h3>
+  </div>
+    <div>
+      <h1>You have succesfully accesed a FrogPage Gallery!</h1>
+      <p>From here you can look at cute frogs. Isn't it great?!</p>
+      <p>Click on the small picture to make it appear bigger at the bottom.</p>
+    </div>
+</div>
+<div class="galleryBox">
+<div class="container">
+
+  <div class="mySlides">
+    <div class="numbertext">1 / 6</div>
+      <img src="../pictures/frogs/alien-frog.jpg" style="width:100%">
+  </div>
+
+  <div class="mySlides">
+    <div class="numbertext">2 / 6</div>
+      <img src="../pictures/frogs/cute-frog.jpg" style="width:100%">
+  </div>
+
+  <div class="mySlides">
+    <div class="numbertext">3 / 6</div>
+      <img src="../pictures/frogs/flowe-frog.jpg" style="width:100%">
+  </div>
+
+  <div class="mySlides">
+    <div class="numbertext">4 / 6</div>
+      <img src="../pictures/frogs/frog-in-pot.png" style="width:100%">
+  </div>
+
+  <div class="mySlides">
+    <div class="numbertext">5 / 6</div>
+      <img src="../pictures/frogs/king-frog.jpg" style="width:100%">
+  </div>
+
+  <div class="mySlides">
+    <div class="numbertext">6 / 6</div>
+      <img src="../pictures/frogs/raspberry-frog.jpg" style="width:100%">
+  </div>
+
+  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+  <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+  <div class="caption-container">
+    <p id="caption"></p>
+  </div>
+
+  <div class="row">
+    <div class="column">
+      <img class="demo cursor" src="../pictures/frogs/alien-frog.jpg" style="width:100%"  onclick="currentSlide(1)" alt="alien-frog">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="../pictures/frogs/cute-frog.jpg" style="width:100%" onclick="currentSlide(2)" alt="cute-frog">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="../pictures/frogs/flowe-frog.jpg" style="width:100%" onclick="currentSlide(3)" alt="flowe-frog">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="../pictures/frogs/frog-in-pot.png" style="width:100%" onclick="currentSlide(4)" alt="frog-in-pot">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="../pictures/frogs/king-frog.jpg" style="width:100%" onclick="currentSlide(5)" alt="king-frog">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="../pictures/frogs/raspberry-frog.jpg" style="width:100%" onclick="currentSlide(6)" alt="raspberry-frog">
+    </div>
+  </div>
+</div>
+</div>
+<div class="text">
+    <h1>Thank you for using FrogPage!</h1>
+    <p>Here you can logout.</p>
+    <div>
+      <a href='../login.html'>logout</a>
+    </div>
+    <p>See you around!</p>
+</div>
+
+<script src="../gallery/gallery.js"></script>
+</body>
+</html>
+

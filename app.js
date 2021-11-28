@@ -12,7 +12,8 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname,'./public')));
 app.use('/css', express.static(__dirname + 'public/css'));
 app.use('/pictures', express.static(__dirname + 'public/pictures'));
-app.use('/outputs', express.static(__dirname + 'public/outputs'));
+app.use('/gallery', express.static(__dirname + 'public/gallery'));
+// app.use(express.static(path.join(__dirname,'./gallery')));
 
 app.get('/',(req,res) => {
     res.sendFile(path.join(__dirname,'./public/index.html'));
@@ -33,13 +34,13 @@ app.post('/register', async (req, res) => {
             };
             users.push(newUser);
             console.log('User list', users);
-    
-            res.send("<div align ='center'><h2>Registration successful</h2></div><br><br><div align='center'><a href='./login.html'>login</a></div><br><br><div align='center'><a href='./register.html'>Register another user</a></div>");
+            
+            res.sendFile(__dirname + '/public/registerSuccess.html');
         } else {
-            res.send("<div align ='center'><h2>Email already used</h2></div><br><br><div align='center'><a href='./register.html'>Register again</a></div>");
+            res.sendFile(__dirname + '/public/registerError.html');
         }
     } catch{
-        res.send("Internal server error");
+        res.send("Internal 5000 error");
     }
 });
 
@@ -54,17 +55,16 @@ app.post('/login', async (req, res) => {
             const passwordMatch = await bcrypt.compare(submittedPass, storedPass);
             if (passwordMatch) {
                 let usrname = findUser.username;
-                res.send(`<div align ='center'><h2>login successful</h2></div><br><br><br><div align ='center'><h3>Hello ${usrname}</h3></div><br><br><div align='center'><a href='./login.html'>logout</a></div>`);
+                res.sendFile(__dirname + '/public/gallery/gallery.html');
             } else {
-                res.send("<div align ='center'><h2>Invalid email or password</h2></div><br><br><div align ='center'><a href='./login.html'>login again</a></div>");
+                res.sendFile(__dirname + '/public/loginError.html');
             }
         }
         else {
     
             let fakePass = `$2b$$10$ifgfgfgfgfgfgfggfgfgfggggfgfgfga`;
             await bcrypt.compare(req.body.password, fakePass);
-    
-            res.send("<div align ='center'><h2>Invalid email or password</h2></div><br><br><div align='center'><a href='./login.html'>login again<a><div>");
+            res.sendFile(__dirname + '/public/loginError.html');
         }
     } catch{
         res.send("Internal 500 error");
