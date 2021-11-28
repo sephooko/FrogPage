@@ -9,8 +9,51 @@ div {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    border: 3px solid  #206020;
+    border: 3px solid #206020;
     padding: 20px;
     background-color: #8cd98c;
     opacity: 90%;
+    color:#206020;
+}
+
+input[type=text]{
+    border: 1px solid #53c653;
+    background-color: #c6ecc6;
+}
+input[type=password]{
+    border: 1px solid #53c653;
+    background-color: #c6ecc6;
+}
+input[type=email]{
+    border: 1px solid #53c653;
+    background-color: #c6ecc6;
+  }
+input[type=text]:focus {
+    border: 1px solid #53c653;
+    background-color: #b3e6b3;
+  }
+input[type=password]:focus {
+    border: 1px solid #53c653;
+    background-color: #b3e6b3;
+  }
+input[type=email]:focus {
+    border: 1px solid #53c653;
+    background-color: #b3e6b3;
+}
+input::placeholder{
+    color: #53c653;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}  
+button{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: #339933;
+    background-color: #c6ecc6;
+    border: 1px solid #b3e6b3;
+    
+    padding: 0.5rem;
+}
+button:hover{
+    color: #c6ecc6;
+    background-color: #339933;
+    border: 1px solid #2d862d;
 }

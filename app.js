@@ -12,6 +12,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname,'./public')));
 app.use('/css', express.static(__dirname + 'public/css'));
 app.use('/pictures', express.static(__dirname + 'public/pictures'));
+app.use('/outputs', express.static(__dirname + 'public/outputs'));
 
 app.get('/',(req,res) => {
     res.sendFile(path.join(__dirname,'./public/index.html'));
@@ -19,9 +20,11 @@ app.get('/',(req,res) => {
 
 app.post('/register', async (req, res) => {
     try{
-        let findEmail = users.find((data) => req.body.email === data.email);
-        if (!findEmail) {
+        let checkUser = users.find((data) => req.body.email === data.email);
+        if (!checkUser) {
+    
             let hashPassword = await bcrypt.hash(req.body.password, 10);
+    
             let newUser = {
                 id: Date.now(),
                 username: req.body.username,
@@ -31,27 +34,27 @@ app.post('/register', async (req, res) => {
             users.push(newUser);
             console.log('User list', users);
     
-            res.send("<div align ='center'><h2>Registration successful</h2></div><br><br><div align='center'><a href='./login.html'>login</a></div><br><br><div align='center'><a href='./registration.html'>Register another user</a></div>");
+            res.send("<div align ='center'><h2>Registration successful</h2></div><br><br><div align='center'><a href='./login.html'>login</a></div><br><br><div align='center'><a href='./register.html'>Register another user</a></div>");
         } else {
-            res.send("<div align ='center'><h2>Email already used</h2></div><br><br><div align='center'><a href='./registration.html'>Register again</a></div>");
+            res.send("<div align ='center'><h2>Email already used</h2></div><br><br><div align='center'><a href='./register.html'>Register again</a></div>");
         }
     } catch{
-        res.send("Internal 500 error");
+        res.send("Internal server error");
     }
 });
 
 app.post('/login', async (req, res) => {
     try{
-        let findEmail = users.find((data) => req.body.email === data.email);
-        if (findEmail) {
+        let findUser = users.find((data) => req.body.email === data.email);
+        if (findUser) {
     
-            let submittedPassword = req.body.password; 
-            let storedPassword = findEmail.password; 
+            let submittedPass = req.body.password; 
+            let storedPass = findUser.password; 
     
-            const passwordMatch = await bcrypt.compare(submittedPassword, storedPassword);
+            const passwordMatch = await bcrypt.compare(submittedPass, storedPass);
             if (passwordMatch) {
-                let userName = findEmail.username;
-                res.send(`<div align ='center'><h2>login successful</h2></div><br><br><br><div align ='center'><h3>Hello ${userName}</h3></div><br><br><div align='center'><a href='./login.html'>logout</a></div>`);
+                let usrname = findUser.username;
+                res.send(`<div align ='center'><h2>login successful</h2></div><br><br><br><div align ='center'><h3>Hello ${usrname}</h3></div><br><br><div align='center'><a href='./login.html'>logout</a></div>`);
             } else {
                 res.send("<div align ='center'><h2>Invalid email or password</h2></div><br><br><div align ='center'><a href='./login.html'>login again</a></div>");
             }
@@ -69,6 +72,6 @@ app.post('/login', async (req, res) => {
 });
 
 
-server.listen(3000, function(){
-    console.log("server is listening on port: 3000");
+server.listen(5000, function(){
+    console.log("server is listening on port: 5000");
 });
